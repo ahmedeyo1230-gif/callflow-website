@@ -1,3 +1,5 @@
+// SCRIPT.JS
+
 // ===========================
 // Load EmailJS safely
 // ===========================
@@ -14,10 +16,183 @@ function loadEmailJSSDK() {
   });
 }
 
+// ===========================
+// Premium UX Helpers
+// ===========================
+function prefersReducedMotion() {
+  return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function setupScrollReveal() {
+  const reduce = prefersReducedMotion();
+
+  // Add reveal class to elements without changing your HTML structure
+  const revealSelectors = [
+    ".section__head",
+    ".panel",
+    ".panel--feature",
+    ".step",
+    ".quote",
+    ".stat",
+    ".chip",
+    ".bulletbox",
+    ".callout",
+    ".stack__item",
+    ".leadbox",
+    ".form",
+    ".finalcta",
+    ".trust__item",
+    ".hero__note",
+    ".card",
+  ];
+
+  const els = new Set();
+  revealSelectors.forEach((sel) => {
+    document.querySelectorAll(sel).forEach((el) => els.add(el));
+  });
+
+  // Hero cinematic staging
+  const heroStage = document.querySelectorAll(
+    ".hero__content .pill, .hero__content h1, .hero__content .lead, .hero__cta, .trust"
+  );
+  heroStage.forEach((el) => els.add(el));
+
+  // Apply base reveal class + stagger
+  let i = 0;
+  els.forEach((el) => {
+    el.classList.add("reveal");
+    el.style.setProperty("--d", `${Math.min(i * 55, 420)}ms`);
+    i++;
+  });
+
+  if (reduce) {
+    // If reduced motion, just show everything
+    els.forEach((el) => el.classList.add("is-visible"));
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  els.forEach((el) => io.observe(el));
+}
+
+function setupMagneticButtons() {
+  if (prefersReducedMotion()) return;
+
+  const buttons = document.querySelectorAll(".btn");
+  const strength = 10; // subtle premium pull
+
+  const isFinePointer =
+    window.matchMedia &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (!isFinePointer) return;
+
+  buttons.forEach((btn) => {
+    btn.classList.add("magnetic");
+
+    function onMove(e) {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - (r.left + r.width / 2);
+      const y = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
+    }
+
+    function onLeave() {
+      btn.style.transform = "";
+    }
+
+    btn.addEventListener("mousemove", onMove);
+    btn.addEventListener("mouseleave", onLeave);
+  });
+}
+
+function setupCursorGlow() {
+  const reduce = prefersReducedMotion();
+  if (reduce) return;
+
+  const isFinePointer =
+    window.matchMedia &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  if (!isFinePointer) return;
+
+  const glow = document.createElement("div");
+  glow.className = "cursor-glow";
+  glow.setAttribute("aria-hidden", "true");
+  document.body.appendChild(glow);
+
+  let raf = null;
+  let tx = 0,
+    ty = 0;
+  let x = 0,
+    y = 0;
+
+  const speed = 0.14;
+
+  function loop() {
+    x += (tx - x) * speed;
+    y += (ty - y) * speed;
+    glow.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    raf = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener("pointermove", (e) => {
+    tx = e.clientX;
+    ty = e.clientY;
+    if (!raf) raf = requestAnimationFrame(loop);
+  });
+
+  window.addEventListener("pointerdown", () => glow.classList.add("cursor-glow--active"));
+  window.addEventListener("pointerup", () => glow.classList.remove("cursor-glow--active"));
+}
+
+function setupSmoothAnchorOffset() {
+  // Smooth scroll already exists via CSS; this ensures header offset feels better
+  // without changing your markup. It only triggers on in-page anchor clicks.
+  const header = document.querySelector(".header");
+  const headerOffset = header ? header.offsetHeight + 52 : 96;
+
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+
+    const id = a.getAttribute("href");
+    if (!id || id === "#") return;
+
+    const target = document.querySelector(id);
+    if (!target) return;
+
+    // Let normal behavior occur for #top (nice)
+    if (id === "#top") return;
+
+    e.preventDefault();
+    const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   // Current year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Premium enhancements
+  setupScrollReveal();
+  setupMagneticButtons();
+  setupCursorGlow();
+  setupSmoothAnchorOffset();
 
   // Mobile menu toggle
   const burger = document.querySelector(".burger");
@@ -101,6 +276,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       submitBtn.textContent = "Sending...";
     }
 
+    // Premium micro-feedback
+    leadForm.classList.add("is-sending");
+
     emailjs
       .sendForm("service_gxu73ka", "template_77itw6n", this)
       .then(() => {
@@ -122,6 +300,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       })
       .finally(() => {
         if (submitBtn) submitBtn.disabled = false;
+        leadForm.classList.remove("is-sending");
       });
   });
 });
