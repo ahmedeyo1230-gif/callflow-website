@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CallFlow — AI Voice Receptionist & Phone Call Automation</title>
+    <meta name="description"
+        content="Never miss another customer call again. Premium AI voice assistants that answer calls, book appointments, and handle inquiries 24/7." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Premium font pairing -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Load your JS after HTML is parsed -->
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <!-- Ambient overlays -->
+    <div class="bg-ambient" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+
+    <!-- Announcement -->
+    <div class="announce">
+        <div class="container announce__inner">
+            <span>Premium onboarding — limited spots this month.</span>
+            <a class="announce__link" href="#lead">Get a Free AI Demo</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="top">
+        <div class="container header__inner">
+            <a class="logo" href="#top" aria-label="Home">
+                <span class="logo__mark">CF</span>
+                <span class="logo__text">CallFlow</span>
+                <span class="logo__tag">AI Voice Automation</span>
+            </a>
+
+            <nav class="nav" aria-label="Primary">
+                <a href="#solution">Solution</a>
+                <a href="#how">How it works</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#industries">Industries</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="header__actions">
+                <a class="btn btn--ghost" href="#how">See How It Works</a>
+                <a class="btn btn--primary" href="#lead">Get a Free AI Demo</a>
+                <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile" id="mobileMenu" hidden>
+            <div class="container mobile__inner">
+                <a href="#solution">Solution</a>
+                <a href="#how">How it works</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#industries">Industries</a>
+                <a href="#faq">FAQ</a>
+                <a class="btn btn--primary mobile__cta" href="#lead">Get a Free AI Demo</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero">
+            <div class="container hero__grid">
+                <div class="hero__content">
+                    <div class="pill">
+                        <span class="pill__dot"></span>
+                        Premium AI Reception • Phone Automation • Multi-Language
+                    </div>
+
+                    <h1>
+                        Never Miss Another<br />
+                        <span class="text-gold">Customer Call</span> Again
+                    </h1>
+
+                    <p class="lead">
+                        Luxury-grade AI voice assistants that answer calls, book appointments, and handle customer
+                        inquiries
+                        <strong>24/7</strong> — so your business captures every opportunity without hiring extra staff.
+                    </p>
+
+                    <div class="hero__cta">
+                        <a class="btn btn--primary btn--lg" href="#lead">Get My Free AI Demo</a>
+                        <a class="btn btn--ghost btn--lg" href="#how">See How It Works</a>
+                    </div>
+
+                    <div class="trust">
+                        <div class="trust__item">
+                            <span class="trust__num">24/7</span>
+                            <span class="trust__text">Call coverage</span>
+                        </div>
+                        <div class="trust__item">
+                            <span class="trust__num">Instant</span>
+                            <span class="trust__text">Answers & booking</span>
+                        </div>
+                        <div class="trust__item">
+                            <span class="trust__num">White-glove</span>
+                            <span class="trust__text">Setup for you</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero__card">
+                    <div class="card card--premium">
+                        <div class="card__header">
+                            <div class="card__title">Premium Demo Preview</div>
+                            <div class="card__badge">Live-style</div>
+                        </div>
+
+                        <div class="hero-media">
+                            <img src="./assets/hero.png" alt="CallFlow AI voice assistant product mockup" />
+                        </div>
+
+                        <div class="card__footer">
+                            <div class="mini">
+                                <span class="dot dot--gold"></span>
+                                <span>Call answering • Booking • Lead capture • Escalation to staff</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero__note">
+                        <span class="icon">✦</span>
+                        Designed for high-intent leads & premium customer experience.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem -->
+        <section class="section section--alt" id="problem">
+            <div class="container">
+                <div class="section__head">
+                    <h2>Your Business Is Losing Revenue Every Day</h2>
+                    <p>
+                        Every missed call is a missed customer. If your team is busy, overwhelmed, or unavailable after
+                        hours,
+                        potential clients simply move on to your competitor.
+                    </p>
+                </div>
+
+                <div class="grid grid--3">
+                    <div class="panel">
+                        <h3>Missed calls = lost sales</h3>
+                        <p>Customers won’t wait — they call the next business.</p>
+                    </div>
+                    <div class="panel">
+                        <h3>Repetitive questions</h3>
+                        <p>Your staff gets stuck answering the same FAQs all day.</p>
+                    </div>
+                    <div class="panel">
+                        <h3>After-hours lost leads</h3>
+                        <p>Calls at night or weekends go unanswered.</p>
+                    </div>
+                </div>
+
+                <div class="bulletbox">
+                    <ul class="bullets">
+                        <li>Long hold times frustrate customers</li>
+                        <li>Hiring receptionists is expensive</li>
+                        <li>Busy staff can’t pick up every call</li>
+                    </ul>
+                    <p class="bulletbox__note">
+                        You pay for traffic and marketing — don’t let missed calls leak revenue.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution -->
+        <section class="section" id="solution">
+            <div class="container">
+                <div class="split">
+                    <div>
+                        <h2>Meet Your 24/7 AI Receptionist</h2>
+                        <p class="muted">
+                            Luxury-grade voice automation built to feel human, sound professional, and convert callers
+                            into customers.
+                        </p>
+
+                        <ul class="checklist">
+                            <li>Answer customer inquiries instantly</li>
+                            <li>Book appointments automatically</li>
+                            <li>Qualify leads & capture details</li>
+                            <li>Transfer urgent calls to your staff</li>
+                            <li>Provide pricing & service info</li>
+                            <li>Multi-language capability</li>
+                            <li>Integrations with CRM / booking workflows</li>
+                        </ul>
+
+                        <div class="callout">
+                            <strong>Not replacing your team</strong> — elevating them. Your staff handles what matters;
+                            AI handles the
+                            rest.
+                        </div>
+
+                        <div class="split__cta">
+                            <a class="btn btn--primary" href="#lead">Get a Free Custom Demo</a>
+                            <a class="btn btn--ghost" href="#benefits">See Benefits</a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="card card--dark">
+                            <div class="card__header">
+                                <div class="card__title">What it handles</div>
+                                <div class="card__badge">24/7</div>
+                            </div>
+
+                            <div class="stack">
+                                <div class="stack__item">
+                                    <div class="stack__icon">☎</div>
+                                    <div>
+                                        <div class="stack__title">Instant call answering</div>
+                                        <div class="stack__desc">Zero hold times. Immediate response.</div>
+                                    </div>
+                                </div>
+                                <div class="stack__item">
+                                    <div class="stack__icon">📅</div>
+                                    <div>
+                                        <div class="stack__title">Appointment booking</div>
+                                        <div class="stack__desc">Confirms date/time & collects details.</div>
+                                    </div>
+                                </div>
+                                <div class="stack__item">
+                                    <div class="stack__icon">💬</div>
+                                    <div>
+                                        <div class="stack__title">FAQs & pricing</div>
+                                        <div class="stack__desc">Answers common questions instantly.</div>
+                                    </div>
+                                </div>
+                                <div class="stack__item">
+                                    <div class="stack__icon">✦</div>
+                                    <div>
+                                        <div class="stack__title">Premium customer experience</div>
+                                        <div class="stack__desc">A polished, brand-matched voice & tone.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card__footer">
+                                <div class="mini">
+                                    <span class="dot dot--gold"></span>
+                                    <span>Natural voice • Custom scripts • Escalation to humans</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- split -->
+            </div>
+        </section>
+
+        <!-- How it Works -->
+        <section class="section section--alt" id="how">
+            <div class="container">
+                <div class="section__head">
+                    <h2>Simple Setup. Premium Results.</h2>
+                    <p>White-glove onboarding — we handle the full setup.</p>
+                </div>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step__num">1</div>
+                        <h3>We Configure It For Your Business</h3>
+                        <p>Services, pricing, FAQs, brand tone, escalation rules, and lead capture.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__num">2</div>
+                        <h3>AI Learns Your Call Flow</h3>
+                        <p>We tailor scripts and scenarios to match your real customers.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step__num">3</div>
+                        <h3>Go Live & Capture Revenue</h3>
+                        <p>24/7 answering, booking, and lead capture — automatically.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits -->
+        <section class="section" id="benefits">
+            <div class="container">
+                <div class="section__head">
+                    <h2>Why Premium Businesses Choose CallFlow</h2>
+                    <p class="muted">This is not just automation. It’s a revenue system.</p>
+                </div>
+
+                <div class="grid grid--2">
+                    <div class="panel panel--feature">
+                        <h3>Capture every call</h3>
+                        <p>Even after hours — stop losing customers to competitors.</p>
+                    </div>
+                    <div class="panel panel--feature">
+                        <h3>Increase booked appointments</h3>
+                        <p>Automated scheduling and confirmations reduce drop-offs.</p>
+                    </div>
+                    <div class="panel panel--feature">
+                        <h3>Reduce staff workload</h3>
+                        <p>Your team focuses on customers — not repetitive calls.</p>
+                    </div>
+                    <div class="panel panel--feature">
+                        <h3>Lower operational costs</h3>
+                        <p>Scale call handling without scaling payroll.</p>
+                    </div>
+                    <div class="panel panel--feature">
+                        <h3>Instant responses</h3>
+                        <p>No hold times — better experience, higher conversions.</p>
+                    </div>
+                    <div class="panel panel--feature">
+                        <h3>Analytics & insight</h3>
+                        <p>Track outcomes, lead quality, and customer intent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries -->
+        <section class="section section--alt" id="industries">
+            <div class="container">
+                <div class="section__head">
+                    <h2>Perfect For Businesses That Rely On Phone Calls</h2>
+                    <p>If customers call your business, this works for you.</p>
+                </div>
+
+                <div class="chips">
+                    <span class="chip">Restaurants</span>
+                    <span class="chip">Medical & Dental Clinics</span>
+                    <span class="chip">Law Firms</span>
+                    <span class="chip">Car Dealerships</span>
+                    <span class="chip">Real Estate Agencies</span>
+                    <span class="chip">Salons & Spas</span>
+                    <span class="chip">Service Businesses</span>
+                    <span class="chip">E-commerce Support</span>
+                </div>
+
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat__num">24/7</div>
+                        <div class="stat__label">Coverage</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__num">Higher</div>
+                        <div class="stat__label">Conversions</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat__num">Premium</div>
+                        <div class="stat__label">Experience</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Proof -->
+        <section class="section" id="proof">
+            <div class="container">
+                <div class="section__head">
+                    <h2>Real Business Impact</h2>
+                    <p class="muted">
+                        Premium call automation that turns more callers into booked appointments and paying customers.
+                    </p>
+                </div>
+
+                <div class="grid grid--3">
+                    <div class="quote">
+                        <p>“We stopped losing leads after hours. The AI captures everything and our team follows up the
+                            next day.”
+                        </p>
+                        <div class="quote__meta">Operations Manager • Service Business</div>
+                    </div>
+                    <div class="quote">
+                        <p>“Customers get answers instantly. Bookings increased and our staff isn’t overwhelmed
+                            anymore.”</p>
+                        <div class="quote__meta">Owner • Clinic</div>
+                    </div>
+                    <div class="quote">
+                        <p>“Setup was smooth. Urgent calls transfer immediately and everything else runs automatically.”
+                        </p>
+                        <div class="quote__meta">Manager • Restaurant</div>
+                    </div>
+                </div>
+
+                <div class="note">
+                    <strong>Typical outcomes:</strong> fewer missed calls, more bookings, and improved customer
+                    satisfaction
+                    (results vary by call volume & workflow).
+                </div>
+            </div>
+        </section>
+
+        <!-- Objections -->
+        <section class="section section--alt" id="objections">
+            <div class="container">
+                <div class="section__head">
+                    <h2>Questions Business Owners Ask</h2>
+                    <p>We built this to feel human, sound premium, and convert callers efficiently.</p>
+                </div>
+
+                <div class="grid grid--2">
+                    <div class="panel">
+                        <h3>Will it sound robotic?</h3>
+                        <p>No — the voice is natural and can be matched to your brand tone.</p>
+                    </div>
+                    <div class="panel">
+                        <h3>Can it reach my staff?</h3>
+                        <p>Yes — urgent calls can transfer instantly to a human.</p>
+                    </div>
+                    <div class="panel">
+                        <h3>Is setup complicated?</h3>
+                        <p>No — we handle everything. You just approve the flow.</p>
+                    </div>
+                    <div class="panel">
+                        <h3>Is data secure?</h3>
+                        <p>Yes — secure handling and best-practice integrations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offer / Lead -->
+        <section class="section" id="lead">
+            <div class="container">
+                <div class="leadbox">
+                    <div class="leadbox__content">
+                        <h2>Get A Free Custom AI Demo</h2>
+                        <p>
+                            We’ll review your call flow, identify missed revenue opportunities, and build a demo
+                            tailored to your
+                            business.
+                            No obligation — just clarity.
+                        </p>
+
+                        <ul class="checklist checklist--compact">
+                            <li>Free call-flow audit</li>
+                            <li>Custom demo tailored to your business</li>
+                            <li>Clear next steps & pricing options</li>
+                        </ul>
+
+                        <div class="urgent">
+                            <span class="urgent__badge">Limited</span>
+                            <span>We onboard a limited number of businesses each month to ensure premium setup
+                                quality.</span>
+                        </div>
+                    </div>
+
+                    <!-- ✅ UPDATED name="" attributes to avoid collisions -->
+                    <form class="form" id="leadForm">
+                        <div class="form__title">Request your demo</div>
+
+                        <label class="field">
+                            <span>Full name</span>
+                            <input type="text" name="from_name" placeholder="Your name" required>
+                        </label>
+
+                        <label class="field">
+                            <span>Company name</span>
+                            <input type="text" name="company_name" placeholder="Your company" required>
+                        </label>
+
+                        <label class="field">
+                            <span>Email</span>
+                            <input type="email" name="user_email" placeholder="you@company.com" required>
+                        </label>
+
+                        <label class="field">
+                            <span>Phone</span>
+                            <input type="tel" name="user_phone" placeholder="+44 ..." required>
+                        </label>
+
+                        <label class="field">
+                            <span>What do you need help with?</span>
+                            <select name="user_need" required>
+                                <option value="" selected disabled>Select one</option>
+                                <option>AI Phone Call Receptionist</option>
+                                <option>In-Store / App Voice Assistant</option>
+                                <option>Both</option>
+                            </select>
+                        </label>
+
+                        <label class="field">
+                            <span>Message (optional)</span>
+                            <textarea name="user_message" rows="3"
+                                placeholder="Tell us your industry, call volume, and goal..."></textarea>
+                        </label>
+
+                        <button class="btn btn--primary btn--lg btn--full" type="submit">
+                            Book My Free AI Demo
+                        </button>
+
+                        <p class="form__fine">
+                            By submitting, you agree to be contacted about your request. No spam.
+                        </p>
+
+                        <div class="form__success" id="formSuccess" role="status" aria-live="polite" hidden>
+                            ✅ Thanks! Your request was captured. We’ll contact you shortly.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section section--alt" id="faq">
+            <div class="container">
+                <div class="section__head">
+                    <h2>FAQ</h2>
+                    <p class="muted">Quick answers to common questions.</p>
+                </div>
+
+                <div class="accordion" data-accordion>
+                    <button class="acc" aria-expanded="false">
+                        <span>How long does setup take?</span>
+                        <span class="acc__icon">+</span>
+                    </button>
+                    <div class="acc__panel">
+                        <p>Most businesses go live within days, depending on scripts and integrations.</p>
+                    </div>
+
+                    <button class="acc" aria-expanded="false">
+                        <span>Can it integrate with my booking system?</span>
+                        <span class="acc__icon">+</span>
+                    </button>
+                    <div class="acc__panel">
+                        <p>Yes — we support many platforms and can build simple workflows if needed.</p>
+                    </div>
+
+                    <button class="acc" aria-expanded="false">
+                        <span>Is this expensive?</span>
+                        <span class="acc__icon">+</span>
+                    </button>
+                    <div class="acc__panel">
+                        <p>It’s typically far less than hiring full-time reception staff — and scales with results.</p>
+                    </div>
+
+                    <button class="acc" aria-expanded="false">
+                        <span>Can I cancel anytime?</span>
+                        <span class="acc__icon">+</span>
+                    </button>
+                    <div class="acc__panel">
+                        <p>Yes — flexible options are available depending on your plan and integrations.</p>
+                    </div>
+                </div>
+
+                <div class="finalcta">
+                    <div>
+                        <h3>Stop Losing Customers To Missed Calls</h3>
+                        <p>Let AI handle your calls — so you can focus on growth.</p>
+                    </div>
+                    <a class="btn btn--primary btn--lg" href="#lead">Get Started Today</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <div class="logo logo--footer">
+                    <span class="logo__mark">CF</span>
+                    <span class="logo__text">CallFlow</span>
+                </div>
+                <p class="muted">Premium AI Voice Automation For Modern Businesses.</p>
+            </div>
+
+            <div class="footer__links">
+                <a href="#solution">Solution</a>
+                <a href="#how">How it works</a>
+                <a href="#benefits">Benefits</a>
+                <a href="#lead">Free demo</a>
+            </div>
+
+            <div class="footer__legal">
+                <p>© <span id="year"></span> Ai CallFlow. All rights reserved.</p>
+                <p class="muted">Add Privacy Policy / Terms links when publishing.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
