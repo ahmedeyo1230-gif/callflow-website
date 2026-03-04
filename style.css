@@ -1376,25 +1376,10 @@ body:hover .cursor-glow {
 }
 
 @media (max-width: 520px) {
-  /* Make sure the burger never disappears */
-  .header__actions {
-    gap: 8px;
-  }
-
-  /* Hide the secondary header button to free space */
-  .header__actions .btn--ghost {
+  .header__actions a.btn {
     display: none;
   }
-
-  /* Slightly compact the primary button so it fits nicely */
-  .header__actions .btn {
-    padding: 10px 12px;
-    font-size: 13px;
-    border-radius: 14px;
-  }
-
-  /* Ensure burger stays visible */
   .burger {
-    flex: 0 0 auto;
+    display: inline-block;
   }
 }
