@@ -1376,28 +1376,25 @@ body:hover .cursor-glow {
 }
 
 @media (max-width: 520px) {
-    .hero {
-        padding-top: 44px
-    }
+  /* Make sure the burger never disappears */
+  .header__actions {
+    gap: 8px;
+  }
 
-    .hero__content h1 {
-        font-size: 40px
-    }
+  /* Hide the secondary header button to free space */
+  .header__actions .btn--ghost {
+    display: none;
+  }
 
-    .btn--lg {
-        width: 100%
-    }
+  /* Slightly compact the primary button so it fits nicely */
+  .header__actions .btn {
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: 14px;
+  }
 
-    .hero__cta {
-        width: 100%
-    }
-
-    /* Bigger tap targets / comfy mobile */
-    .btn {
-        min-height: 46px;
-    }
-
-    .container {
-        width: min(var(--max), calc(100% - 34px));
-    }
+  /* Ensure burger stays visible */
+  .burger {
+    flex: 0 0 auto;
+  }
 }
