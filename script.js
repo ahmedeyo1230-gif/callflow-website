@@ -26,6 +26,7 @@ function prefersReducedMotion() {
 function setupScrollReveal() {
   const reduce = prefersReducedMotion();
 
+  // Add reveal class to elements without changing your HTML structure
   const revealSelectors = [
     ".section__head",
     ".panel",
@@ -50,11 +51,13 @@ function setupScrollReveal() {
     document.querySelectorAll(sel).forEach((el) => els.add(el));
   });
 
+  // Hero cinematic staging
   const heroStage = document.querySelectorAll(
     ".hero__content .pill, .hero__content h1, .hero__content .lead, .hero__cta, .trust"
   );
   heroStage.forEach((el) => els.add(el));
 
+  // Apply base reveal class + stagger
   let i = 0;
   els.forEach((el) => {
     el.classList.add("reveal");
@@ -63,6 +66,7 @@ function setupScrollReveal() {
   });
 
   if (reduce) {
+    // If reduced motion, just show everything
     els.forEach((el) => el.classList.add("is-visible"));
     return;
   }
@@ -86,7 +90,7 @@ function setupMagneticButtons() {
   if (prefersReducedMotion()) return;
 
   const buttons = document.querySelectorAll(".btn");
-  const strength = 10;
+  const strength = 10; // subtle premium pull
 
   const isFinePointer =
     window.matchMedia &&
@@ -129,8 +133,10 @@ function setupCursorGlow() {
   document.body.appendChild(glow);
 
   let raf = null;
-  let tx = 0, ty = 0;
-  let x = 0, y = 0;
+  let tx = 0,
+    ty = 0;
+  let x = 0,
+    y = 0;
 
   const speed = 0.14;
 
@@ -152,6 +158,8 @@ function setupCursorGlow() {
 }
 
 function setupSmoothAnchorOffset() {
+  // Smooth scroll already exists via CSS; this ensures header offset feels better
+  // without changing your markup. It only triggers on in-page anchor clicks.
   const header = document.querySelector(".header");
   const headerOffset = header ? header.offsetHeight + 52 : 96;
 
@@ -165,23 +173,28 @@ function setupSmoothAnchorOffset() {
     const target = document.querySelector(id);
     if (!target) return;
 
+    // Let normal behavior occur for #top (nice)
     if (id === "#top") return;
 
     e.preventDefault();
     const y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+
     window.scrollTo({ top: y, behavior: "smooth" });
   });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Current year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Premium enhancements
   setupScrollReveal();
   setupMagneticButtons();
   setupCursorGlow();
   setupSmoothAnchorOffset();
 
+  // Mobile menu toggle
   const burger = document.querySelector(".burger");
   const mobileMenu = document.getElementById("mobileMenu");
 
@@ -192,6 +205,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       mobileMenu.hidden = isOpen;
     });
 
+    // Close mobile menu when clicking a link
     mobileMenu.querySelectorAll("a").forEach((a) => {
       a.addEventListener("click", () => {
         burger.setAttribute("aria-expanded", "false");
@@ -200,6 +214,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // FAQ Accordion
   const accordion = document.querySelector("[data-accordion]");
   if (accordion) {
     const buttons = accordion.querySelectorAll(".acc");
@@ -208,6 +223,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const panel = btn.nextElementSibling;
         const expanded = btn.getAttribute("aria-expanded") === "true";
 
+        // Close all
         buttons.forEach((b) => {
           b.setAttribute("aria-expanded", "false");
           const p = b.nextElementSibling;
@@ -216,6 +232,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (icon) icon.textContent = "+";
         });
 
+        // Open current if it was closed
         if (!expanded && panel && panel.classList.contains("acc__panel")) {
           btn.setAttribute("aria-expanded", "true");
           panel.style.maxHeight = panel.scrollHeight + "px";
@@ -226,6 +243,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
+  // ===========================
+  // EmailJS Lead Form
+  // ===========================
   const leadForm = document.getElementById("leadForm");
   const formSuccess = document.getElementById("formSuccess");
 
@@ -256,6 +276,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       submitBtn.textContent = "Sending...";
     }
 
+    // Premium micro-feedback
     leadForm.classList.add("is-sending");
 
     emailjs
